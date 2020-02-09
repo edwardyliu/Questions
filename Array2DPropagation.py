@@ -11,12 +11,15 @@ def main():
     columns = 4
     
     grid = [
-        [0, 0, 0, 1], 
+        [1, 0, 0, 0], 
         [0, 0, 0, 0], 
         [0, 0, 0, 0],
         [0, 0, 0, 0],
-        [1, 0, 0, 0]]
+        [1, 0, 0, 1]]
     
+    # My logic: instead of looking for an already updated server and letting it push its updates to its adjacent neightbours
+    #   find out-of-date servers and have them look actively look for software updates.
+
     print("Day 0 Grid: ")
     printGrid(grid)
     print("Minimum Number of Days: {0}".format(minimumDays(rows, columns, grid)))
