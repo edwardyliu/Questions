@@ -33,17 +33,22 @@ def implementFeatures(teamCapacity, possibleFeatures, featureRequests):
     # featureRequests -> [] of str; feature requests from users
 
     # create a dictionary for O(1) access to each possible feature
+    # construction: O(possibleFeatures) -> O(p)
     featureDict = {}
     for possibleFeature in possibleFeatures:
         featureDict[possibleFeature] = 0
 
+    # for each word, check if word is in feature dictionary
+    # time complexity: O(featureRequests) -> O(n)
     for feature in featureRequests:
         words = feature.translate(str.maketrans('', '', string.punctuation)).split(' ')
         for word in words:
             if word in featureDict:
                 featureDict[word] += 1
     
-    # construct a max heap, ideally done in O(n); however, heapq only supports O(nlogn)
+    # construct a max heap, ideally done in O(p); however, heapq only supports O(plogp)
+    # Time: O(plogp)
+    # Memory: O(p)
     heap = []
     heaplen = len(featureDict)
     for key, value in featureDict.items():
