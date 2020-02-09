@@ -1,6 +1,11 @@
 import copy
 
 def main():
+    # Question: Given multiple servers arranged in a rows-by-columns grid
+    #   Each server can be in one of two states: updated or out-of-date (1 or 0 respectively)
+    #   Every day, each updated server can push its software upate to an adjacent server (up, down, left or right)
+    #   Goal: find the minimum number of days for all servers on the grid to be up-to-date.
+
     # Test Case:
     rows = 5
     columns = 4
@@ -19,16 +24,12 @@ def main():
 def minimumDays(rows, columns, grid):
     # rows -> int; number of rows
     # columns -> int; number of columns
-    # grid -> [[]] of int; a 2d array representing the server status
+    # grid -> [[]] of int; a 2d array representing the status of each server
     #   0 -> software out of date
     #   1 -> software updated
     
-    # Description: each server can push to its adjacent server the new software updates
-    # adjacent includes: left, right, above, below
-    
     # create an int to keep track of the number of days it took
     days = 0
-
     # create a bool to keep track of if a server was updated or not
     serverUpdate = True
     
@@ -37,8 +38,8 @@ def minimumDays(rows, columns, grid):
         days += 1
 
         # TODO: remove below
-        print("Day {0} Grid: ".format(days))
-        printGrid(grid)
+        # print("Day {0} Grid: ".format(days))
+        # printGrid(grid)
         
     # minus 1 b/c no updates happened for the last day
     return days - 1
